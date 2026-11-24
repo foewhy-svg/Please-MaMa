@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Love</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #e0f2fe;
+      font-family: sans-serif;
+      overflow: hidden;
+    }
+    .card {
+      background: white;
+      padding: 30px 25px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      width: 85%;
+      max-width: 360px;
+      position: relative;
+    }
+    h2 {
+      font-size: 17px;
+      color: #0369a1;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .cute-img {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 20px;
+    }
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+      min-height: 45px;
+    }
+    button {
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: bold;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    #yesBtn {
+      background-color: #0284c7;
+      color: white;
+    }
+    #noBtn {
+      background-color: #cbd5e1;
+      color: #475569;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="cardBox">
+    <h2 id="questionText">မမကိုတကယ်ချစ်မိတာပါမမရယ်
+    
+    <!-- ချစ်စရာ ဝက်ဝံရုပ်လေး -->
+    <div class="cute-img" id="bearIcon">
+      <svg viewBox="0 0 200 160" width="150" height="150">
+        <!-- အသည်းပုံ -->
+        <path d="M100 35 C100 20, 80 20, 80 35 C80 48, 100 60, 100 60 C100 60, 120 48, 120 35 C120 20, 100 20, 100 35 Z" fill="#0284c7"/>
+        <!-- ဝက်ဝံအဖြူ -->
+        <circle cx="60" cy="75" r="12" fill="#fff" stroke="#333" stroke-width="3"/>
+        <circle cx="95" cy="75" r="12" fill="#fff" stroke="#333" stroke-width="3"/>
+        <ellipse cx="78" cy="100" rx="30" ry="26" fill="#fff" stroke="#333" stroke-width="3"/>
+        <circle cx="70" cy="96" r="3" fill="#333"/>
+        <circle cx="88" cy="96" r="3" fill="#333"/>
+        <path d="M75 103 Q79 108 83 103" stroke="#333" stroke-width="2.5" fill="none"/>
+        <!-- ဝက်ဝံအညို -->
+        <circle cx="108" cy="75" r="12" fill="#d2a679" stroke="#333" stroke-width="3"/>
+        <circle cx="143" cy="75" r="12" fill="#d2a679" stroke="#333" stroke-width="3"/>
+        <ellipse cx="125" cy="100" rx="30" ry="26" fill="#d2a679" stroke="#333" stroke-width="3"/>
+        <circle cx="115" cy="96" r="3" fill="#333"/>
+        <circle cx="133" cy="96" r="3" fill="#333"/>
+        <path d="M120 103 Q124 108 128 103" stroke="#333" stroke-width="2.5" fill="none"/>
+      </svg>
+    </div>
+
+    <div class="btn-group">
+      <button id="yesBtn" onclick="accepted()">ချစ်တယ် </button>
+      <button id="noBtn" onmouseover="moveNo()" onclick="handleNo()">မချစ်ပ့ဘူး</button>
+    </div>
+  </div>
+
+  <script>
+    let noClickCount = 0;
+    const messages = [
+      "မမရေ ပြန်ချစ်ပ့လားဟင်",
+      "မမ မညှင်းနဲ့လေ 😭",
+      "ငိုမှာနော် ",
+      "ချစ်တယ် ကိုနှိပ်လိုက်တော့ 😚",
+      "မပြေးတော့ဘူး ချစ်လိုက်တော့နော် "
+    ];
+
+    function moveNo() {
+      const noBtn = document.getElementById('noBtn');
+      const x = Math.random() * 160 - 80;
+      const y = Math.random() * 160 - 80;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    function handleNo() {
+      moveNo();
+      noClickCount++;
+      const noBtn = document.getElementById('noBtn');
+      if (noClickCount < messages.length) {
+        noBtn.innerText = messages[noClickCount];
+      } else {
+        noBtn.innerText = "​ချစ်တယ် နှိပ်တော့နော် ";
+      }
+    }
+
+    function accepted() {
+      document.getElementById('questionText').innerHTML = "မမကို အရမ်းချစ်တယ်နော်...တကယ်ပါဗျာ မမနဲ့အတူရှိနေရရင်သေအောင်ပျော်မိမှာမမရဲ့ ";
+      document.querySelector('.btn-group').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
